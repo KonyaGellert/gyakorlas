@@ -44,6 +44,12 @@ namespace gyakorlas
 
             Console.WriteLine($"A lekötés végén az összeg: {osszeg} Ft");
 
+            Console.WriteLine("--------------------------------------------------------------");
+            //3
+            //nem értem :(
+            Console.Write("Add meg a kezdő sebességet (3.00–5.00 m/s): ");
+            double v0 = double.Parse(Console.ReadLine());
+
 
 
         }
