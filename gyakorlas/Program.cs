@@ -47,10 +47,41 @@ namespace gyakorlas
             Console.WriteLine("--------------------------------------------------------------");
             //3
             //nem értem :(
-            Console.Write("Add meg a kezdő sebességet (3.00–5.00 m/s): ");
-            double v0 = double.Parse(Console.ReadLine());
+            
+            double vKezdo;
+            do
+            {
+                Console.Write("Add meg a kezdő sebességet (3.00–5.00 m/s): ");
+                vKezdo = double.Parse(Console.ReadLine());
+            }
+            while (vKezdo < 3.0 || vKezdo > 5.00);
+            const double tav = 100.0; 
+            double fele = tav / 2.0;
+            double lassuloTav = 10;
 
+            double vMax = vKezdo + 4.0;
 
+            double a1 = (vMax - vKezdo) * (vMax + vKezdo) / (2*fele);
+            Console.WriteLine("tizmeterenkenti sebbesseg");
+            for (int i =10; i<=tav;i=i+10)
+            {
+                double v;
+                if (i <= fele)
+                {
+                    v = vKezdo + (vMax - vKezdo) * (i / fele);
+                }
+                else if (i > tav - lassuloTav)
+                {
+                    double vVeg = vMax / 2;
+                    v = vMax - (vMax - vVeg) * ((i - (tav - lassuloTav)) / lassuloTav);
+                }
+                else 
+                {
+                    v = vMax; 
+                }
+                double vKmH = v * 3.6;
+                Console.WriteLine($"{i,3} m: {vKmH,6:F2} km/h");
+            }
 
         }
     }
